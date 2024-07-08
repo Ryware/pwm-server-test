@@ -12,6 +12,13 @@ class Command(BaseCommand):
                 shipping_data = item_data.pop('shipping')
                 # Transform the JSON key 'estimatedDelivery' to the model field 'estimated_delivery'
                 shipping_data['estimated_delivery'] = shipping_data.pop('estimatedDelivery')
-                shipping = Shipping.objects.create(**shipping_data)
+                # Convert to appropriate numeric types
+                shipping_data['cost'] = float(shipping_data['cost'])
+                item_data['price'] = float(item_data['price'])
+                item_data['review'] = float(item_data['review'])
+                item_data['discount'] = float(item_data['discount'])
                 item_data['in_stock'] = item_data.pop('inStock')
+
+                shipping = Shipping.objects.create(**shipping_data)
                 Item.objects.create(**item_data, shipping=shipping)
+
