@@ -13,7 +13,7 @@ def item_list(request):
             'price': float(item.price),
             'currency': item.currency,
             'category': item.category,
-            'in_stock': item.in_stock,
+            'inStock': item.in_stock,
             'image': item.image,
             'review': float(item.review),
             'discount': float(item.discount),
@@ -21,7 +21,7 @@ def item_list(request):
             'shipping': {
                 'cost': float(item.shipping.cost),
                 'method': item.shipping.method,
-                'estimated_delivery': item.shipping.estimated_delivery
+                'estimatedDelivery': item.shipping.estimated_delivery
             }
         }
         items_list.append(item_data)
