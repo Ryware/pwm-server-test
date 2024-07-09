@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'corsheaders',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -49,7 +50,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+#CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = ['https://main--pwm-front-test.netlify.app']
+#CORS_ALLOWED_ORIGIN_REGEXES = []
 
 ROOT_URLCONF = 'pwm_item_api.urls'
 
